@@ -19,8 +19,10 @@ public class mainBooking {
 
 
 
-
         }
 
+        System.out.println(result[0].seatType1 +"  "+ result[0].seatsAvailable1);
+        System.out.println(result[0].seatType2 +"  "+ result[0].seatsAvailable2);
+        System.out.println(result[0].seatType3 +"  "+ result[0].seatsAvailable3);
     }
 }

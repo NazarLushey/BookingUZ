@@ -10,11 +10,11 @@ public class train {
     String trainFrom;
     String trainTo;
     String fromto;
-    String dateDeparture;   //���� ������������
-    String dateArival;      //���� ��������
-    String timeDeparture;   //��� ������������
-    String timeArival;      //���
-    String timeFromTo;      //��� ����������� � ��������
+    String dateDeparture;
+    String dateArival;
+    String timeDeparture;
+    String timeArival;
+    String timeFromTo;
     int hourFrom;
     int minuteFrom;
     int hourTo;
@@ -24,11 +24,12 @@ public class train {
     String durationHour;
     String durationMinute;
     int durationMin;
-    int seatsAvailable_P;   // �������� ���������
-    int seatsAvailable_C;   // �������� ����
-    int seatsAvailable_L;   // �������� �����
-    int seatsAvailable_C1;  // �������� ������� 1-��� �����
-    int seatsAvailable_C2;  // �������� ������� 2-��� �����
+    String seatType1;
+    String seatType2;
+    String seatType3;
+    int seatsAvailable1;
+    int seatsAvailable2;
+    int seatsAvailable3;
 
 
         public train(int i) {
@@ -43,7 +44,7 @@ public class train {
                     (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[3]/div[1]/span")).getText();
             ;   //���� ������������
             dateArival = loadPage.driver.findElement
-                    (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[3]/div[2]/span")).getText();     //���� ��������
+                    (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[3]/div[2]/span")).getText();
 
             timeFromTo = loadPage.driver.findElement
                     (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[4]")).getText();
@@ -68,21 +69,49 @@ public class train {
             minuteTo = Integer.parseInt(tft4.toString());
 
 
-            timeDeparture = "timeDeparture";   //��� ������������
-            timeArival = "timeArival";      //��� ��������
+            timeDeparture = "timeDeparture";
+            timeArival = "timeArival";
             duration = loadPage.driver.findElement
                     (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[5]")).getText();
 
 
-            seatsAvailable_P = 1;   // �������� ���������
-            seatsAvailable_C = 2;   // �������� ����
-            seatsAvailable_L = 3;   // �������� �����
-            seatsAvailable_C1 = 4;  // �������� ������� 1-��� �����
-            seatsAvailable_C2 = 5;  // �������� ������� 2-��� �����
+
+            try {
+                seatType1 = loadPage.driver.findElement
+                        (By.xpath(".//*[@id='ts_res_tbl']/tbody/tr["+(1+i)+"]/td[6]/div[1]/i")).getText();
+            }
+            catch (Exception e){}
+
+            try {
+                seatType2 = loadPage.driver.findElement
+                        (By.xpath(".//*[@id='ts_res_tbl']/tbody/tr["+(1+i)+"]/td[6]/div[2]/i")).getText();
+            }
+            catch (Exception e){}
+
+            try {
+                seatType3 = loadPage.driver.findElement
+                        (By.xpath(".//*[@id='ts_res_tbl']/tbody/tr[" + (1 + i) + "]/td[6]/div[3]/i")).getText();
+            }
+            catch (Exception e){}
+
+            try {
+                 seatsAvailable1 = Integer.parseInt(loadPage.driver.findElement
+                        (By.xpath(".//*[@id='ts_res_tbl']/tbody/tr[" + (i + 1) + "]/td[6]/div[1]/b")).getText());
+            }
+            catch (Exception e){}
+            try {
+                 seatsAvailable2 = Integer.parseInt(loadPage.driver.findElement
+                        (By.xpath(".//*[@id='ts_res_tbl']/tbody/tr[" + (i + 1) + "]/td[6]/div[2]/b")).getText());
+            }
+            catch (Exception e){}
+            try {
+                 seatsAvailable3 = Integer.parseInt(loadPage.driver.findElement
+                        (By.xpath(".//*[@id='ts_res_tbl']/tbody/tr[" + (i + 1) + "]/td[6]/div[3]/b")).getText());
+            }
+            catch (Exception e){}
+
+
         }
-
-
-
 
 
     public int getHourFrom() {
