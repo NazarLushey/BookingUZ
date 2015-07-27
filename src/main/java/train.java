@@ -13,7 +13,8 @@ public class train {
     String dateDeparture;   //дата ввідправлення
     String dateArival;      //дата прибуття
     String timeDeparture;   //час ввідправлення
-    String timeArival;      //час прибуття
+    String timeArival;      //час
+    String timeFromTo;      //час відправлення і прибуття
     String duration;        //час в дорозі
     int seatsAvailable_P;   // доступно плацкартів
     int seatsAvailable_C;   // доступно купе
