@@ -14,13 +14,22 @@ public class mainBooking {
             result[i] = new train(i);
 
 
-            System.out.println("Train  "+result[i].trainNumber+"   Arival  "+result[i].dateArival);
-
-
+            System.out.println("Train  " + result[i].trainNumber + "   Arival  " + result[i].dateArival);
+            Thread.sleep(5000);
+            loadPage.driver.findElement(By.partialLinkText("36")).click();
 
 
         }
-      // System.out.println(loadPage.driver.findElement
-               // (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[1]/td[4]")).getText());
+        // System.out.println(loadPage.driver.findElement
+        // (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[1]/td[4]")).getText());
+
+        Thread.sleep(5000);
+
+//        kupe[] place = new kupe[38];
+//        for (int i = 1; i <= 10; i++) {
+//            for (int j = 1; j <= 4; j++) {
+//                place[] = new kupe(i, j);
+//            }
+//        }
     }
 }
