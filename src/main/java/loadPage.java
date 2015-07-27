@@ -9,16 +9,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Created by Oleksiy on 24.07.2015.
  */
 public class loadPage {
-    String placefrom ="Lviv";
-    String placeto ="Kyiv";
-    String date ="07.24.2015";
+    String placefrom ="Київ";
+    String placeto ="Львів";
+    String date ="27.07.2015";
     int refreshTime = 4000;
     int rowCount;
+    static WebDriver driver = new FirefoxDriver();
+
 
 
     public void load() throws InterruptedException {
-    WebDriver driver = new FirefoxDriver();
-    driver.get("http://booking.uz.gov.ua/en/");
+
+    driver.get("http://booking.uz.gov.ua/");
 
 
     WebElement goFromField = driver.findElement(By.name("station_from"));
@@ -50,10 +52,8 @@ public class loadPage {
     System.out.print("Trains found: ");
        setRowCount(driver.findElements(By.className("num")).size());
     System.out.println(rowCount);
+        System.out.println();
 
-     for (int i=0; i<rowCount; i++){
-     System.out.println(driver.findElement(By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr["+(i+1)+"]/td[1]/a")).getText());
-     }
 }
 
     public int getRowCount(){
@@ -62,4 +62,5 @@ public class loadPage {
     public void setRowCount(int r){
         rowCount = r;
     }
+
 }
