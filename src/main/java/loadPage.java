@@ -54,8 +54,6 @@ public class loadPage {
      for (int i=0; i<rowCount; i++){
      System.out.println(driver.findElement(By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr["+(i+1)+"]/td[1]/a")).getText());
      }
-
-
 }
 
     public int getRowCount(){
