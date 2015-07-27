@@ -15,6 +15,7 @@ public class train {
     String timeDeparture;   //час ввідправлення
     String timeArival;      //час
     String timeFromTo;      //час відправлення і прибуття
+    String hourFrom;
     String duration;        //час в дорозі
     int seatsAvailable_P;   // доступно плацкартів
     int seatsAvailable_C;   // доступно купе
@@ -35,6 +36,18 @@ public class train {
                     (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[3]/div[1]/span")).getText();;   //дата ввідправлення
             dateArival = loadPage.driver.findElement
                     (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[3]/div[2]/span")).getText();     //дата прибуття
+
+            timeFromTo = loadPage.driver.findElement
+                    (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[4]")).getText();
+            StringBuffer tft = new StringBuffer(timeFromTo);
+            tft.delete(3,tft.length());
+            hourFrom =  tft.toString();
+
+
+
+
+
+
             timeDeparture = "timeDeparture";   //час ввідправлення
             timeArival = "timeArival";      //час прибуття
             duration = loadPage.driver.findElement
@@ -48,5 +61,7 @@ public class train {
 
     }
 
-
+    public String getHourFrom() {
+        return hourFrom;
+    }
 }

@@ -22,5 +22,7 @@ public class mainBooking {
         }
       // System.out.println(loadPage.driver.findElement
                // (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[1]/td[4]")).getText());
+
+        System.out.println(result[1].getHourFrom());
     }
 }
