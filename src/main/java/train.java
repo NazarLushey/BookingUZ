@@ -10,21 +10,28 @@ public class train {
     String trainFrom;
     String trainTo;
     String fromto;
-    String dateDeparture;   //дата ввідправлення
-    String dateArival;      //дата прибуття
-    String timeDeparture;   //час ввідправлення
-    String timeArival;      //час
-    String timeFromTo;      //час відправлення і прибуття
-    String hourFrom;
-    String duration;        //час в дорозі
-    int seatsAvailable_P;   // доступно плацкартів
-    int seatsAvailable_C;   // доступно купе
-    int seatsAvailable_L;   // доступно люксів
-    int seatsAvailable_C1;  // доступно сидячий 1-ого класу
-    int seatsAvailable_C2;  // доступно сидячий 2-ого класу
+    String dateDeparture;   //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    String dateArival;      //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    String timeDeparture;   //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    String timeArival;      //пїЅпїЅпїЅ
+    String timeFromTo;      //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    int hourFrom;
+    int minuteFrom;
+    int hourTo;
+    int minuteTo;
+
+    String duration;
+    String durationHour;
+    String durationMinute;
+    int durationMin;
+    int seatsAvailable_P;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    int seatsAvailable_C;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+    int seatsAvailable_L;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    int seatsAvailable_C1;  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1-пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    int seatsAvailable_C2;  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2-пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 
-        public train(int i){
+        public train(int i) {
 
             trainNumber = loadPage.driver.findElement
                     (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[1]/a")).getText();
@@ -33,35 +40,82 @@ public class train {
             fromto = loadPage.driver.findElement
                     (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[2]")).getText();
             dateDeparture = loadPage.driver.findElement
-                    (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[3]/div[1]/span")).getText();;   //дата ввідправлення
+                    (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[3]/div[1]/span")).getText();
+            ;   //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             dateArival = loadPage.driver.findElement
-                    (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[3]/div[2]/span")).getText();     //дата прибуття
+                    (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[3]/div[2]/span")).getText();     //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
             timeFromTo = loadPage.driver.findElement
                     (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[4]")).getText();
-            StringBuffer tft = new StringBuffer(timeFromTo);
-            tft.delete(3,tft.length());
-            hourFrom =  tft.toString();
+
+            StringBuffer tft1 = new StringBuffer(timeFromTo);
+            tft1.delete(2, tft1.length());
+            hourFrom = Integer.parseInt(tft1.toString());
+
+            StringBuffer tft2 = new StringBuffer(timeFromTo);
+            tft2 = tft2.delete(0, 3);
+            tft2 = tft2.delete(2, tft2.length());
+            minuteFrom = Integer.parseInt(tft2.toString());
+
+            StringBuffer tft3 = new StringBuffer(timeFromTo);
+            tft3 = tft3.delete(0, 6);
+            tft3 = tft3.delete(2, tft3.length());
+            hourTo = Integer.parseInt(tft3.toString());
+
+            StringBuffer tft4 = new StringBuffer(timeFromTo);
+            tft4 = tft4.delete(0, 9);
+            tft4 = tft4.delete(2, tft4.length());
+            minuteTo = Integer.parseInt(tft4.toString());
 
 
-
-
-
-
-            timeDeparture = "timeDeparture";   //час ввідправлення
-            timeArival = "timeArival";      //час прибуття
+            timeDeparture = "timeDeparture";   //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            timeArival = "timeArival";      //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             duration = loadPage.driver.findElement
-                    (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[5]")).getText();        //час в дорозі
-            seatsAvailable_P = 1;   // доступно плацкартів
-            seatsAvailable_C = 2;   // доступно купе
-            seatsAvailable_L = 3;   // доступно люксів
-            seatsAvailable_C1 = 4;  // доступно сидячий 1-ого класу
-            seatsAvailable_C2 = 5;  // доступно сидячий 2-ого класу
+                    (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[5]")).getText();
 
 
-    }
+            seatsAvailable_P = 1;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            seatsAvailable_C = 2;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+            seatsAvailable_L = 3;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+            seatsAvailable_C1 = 4;  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1-пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+            seatsAvailable_C2 = 5;  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2-пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+        }
 
-    public String getHourFrom() {
+
+
+
+
+    public int getHourFrom() {
         return hourFrom;
     }
+
+    public int getMinuteFrom() {
+        return minuteFrom;
+    }
+
+    public int getHourTo() {
+        return hourTo;
+    }
+
+    public int getMinuteTo() {
+        return minuteTo;
+    }
+
+    public int getDurationMin() {
+        return durationMin;
+    }
+
+    public String getDurationHour() {
+        return durationHour;
+    }
+
+    public String getDurationMinute() {
+        return durationMinute;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
 }
+
+
