@@ -44,9 +44,8 @@ public class loadPage {
     search.click();
     Thread.sleep(2000);
 
-        Thread.sleep(2000);
     driver.findElement(By.xpath(".//*[@id='ts_res_tbl']/tbody/tr[1]/td[6]/div/button")).click();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
 
     while(driver.getPageSource().contains("There is no data for your requested values.")){
         System.out.println("No trains found. Search again in "+ refreshTime/1000 +" seconds.");
