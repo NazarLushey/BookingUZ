@@ -1,5 +1,3 @@
-import org.openqa.selenium.By;
-
 /**
  * Created by Oleksiy on 23.07.2015.
  */
@@ -22,13 +20,13 @@ public class mainBooking {
         }
         System.out.println();
         System.out.println("Дані про перший поїзд з списку:");
-        System.out.println("Відправляється з станції: "+result[0].trainFrom);
-        System.out.println("Прибуває на станцію: "+result[0].trainTo);
+        System.out.println("Відправляється з станції: "+result[1].trainFrom);
+        System.out.println("Прибуває на станцію: "+result[1].trainTo);
         System.out.println("Доступно місць:");
-        System.out.println(result[0].seatType1 +"  "+ result[0].seatsAvailable1);
-        if(result[0].seatsAvailable2!=0){System.out.println(result[0].seatType2 +"  "+ result[0].seatsAvailable2);} else{}
-        if(result[0].seatsAvailable3!=0){System.out.println(result[0].seatType3 +"  "+ result[0].seatsAvailable3);} else{}
-
+        System.out.println(result[1].seatType1 +"  "+ result[1].seatsAvailable1);
+        if(result[0].seatsAvailable2!=0){System.out.println(result[1].seatType2 +"  "+ result[1].seatsAvailable2);} else{}
+        if(result[0].seatsAvailable3!=0){System.out.println(result[1].seatType3 +"  "+ result[1].seatsAvailable3);} else{}
+        System.out.println();
        
 
             VagonKupe vagonKupe = new VagonKupe();
@@ -37,11 +35,11 @@ public class mainBooking {
 
 //
 //
-//        VagonKupe[] place = new VagonKupe[40];
+//        VagonKupe[] Place = new VagonKupe[40];
 //        for(int i = 1; i <= 10; i++){
 //            for (int j = 1; j <= 4; j++){
-//                place[i] = new VagonKupe(i,j);
-//                System.out.println("=========================="+place[i].numberPlace);
+//                Place[i] = new VagonKupe(i,j);
+//                System.out.println("=========================="+Place[i].numberPlace);
 //            }
 //
 //

@@ -42,7 +42,7 @@ public class loadPage {
 
     WebElement search = driver.findElement(By.name("search"));
     search.click();
-    Thread.sleep(2000);
+    Thread.sleep(3000);
 
     driver.findElement(By.xpath(".//*[@id='ts_res_tbl']/tbody/tr[1]/td[6]/div/button")).click();
         Thread.sleep(3000);
