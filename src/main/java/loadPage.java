@@ -44,7 +44,8 @@ public class loadPage {
     search.click();
     Thread.sleep(2000);
 
-    driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[1]/td[6]/div/button")).click();
+        Thread.sleep(2000);
+    driver.findElement(By.xpath(".//*[@id='ts_res_tbl']/tbody/tr[1]/td[6]/div/button")).click();
         Thread.sleep(5000);
 
     while(driver.getPageSource().contains("There is no data for your requested values.")){
