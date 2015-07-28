@@ -44,7 +44,10 @@ public class loadPage {
     search.click();
     Thread.sleep(2000);
 
-    while(driver.getPageSource().contains("За заданими Вами значенням нічого не знайдено.")){
+    driver.findElement(By.xpath(".//*[@id='ts_res_tbl']/tbody/tr[1]/td[6]/div/button")).click();
+        Thread.sleep(3000);
+
+    while(driver.getPageSource().contains("There is no data for your requested values.")){
         System.out.println("No trains found. Search again in "+ refreshTime/1000 +" seconds.");
         Thread.sleep(refreshTime);
         search.click();
@@ -53,6 +56,7 @@ public class loadPage {
        setRowCount(driver.findElements(By.className("num")).size());
     System.out.println(rowCount);
         System.out.println();
+
 
 }
 

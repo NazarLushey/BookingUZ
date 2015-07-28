@@ -29,5 +29,26 @@ public class mainBooking {
         if(result[0].seatsAvailable2!=0){System.out.println(result[0].seatType2 +"  "+ result[0].seatsAvailable2);} else{}
         if(result[0].seatsAvailable3!=0){System.out.println(result[0].seatType3 +"  "+ result[0].seatsAvailable3);} else{}
 
+       
+
+            VagonKupe vagonKupe = new VagonKupe();
+            vagonKupe.loadPlaces();
+
+
+//
+//
+//        VagonKupe[] place = new VagonKupe[40];
+//        for(int i = 1; i <= 10; i++){
+//            for (int j = 1; j <= 4; j++){
+//                place[i] = new VagonKupe(i,j);
+//                System.out.println("=========================="+place[i].numberPlace);
+//            }
+//
+//
+//        }
+
+
+
+
     }
 }
