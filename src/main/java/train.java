@@ -5,6 +5,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class train {
 
+
     int index;
     String trainNumber;
     String trainFrom;
@@ -48,6 +49,7 @@ public class train {
 
             timeFromTo = loadPage.driver.findElement
                     (By.xpath("html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[" + (i + 1) + "]/td[4]")).getText();
+
 
             StringBuffer tft1 = new StringBuffer(timeFromTo);
             tft1.delete(2, tft1.length());
@@ -109,7 +111,6 @@ public class train {
                         (By.xpath(".//*[@id='ts_res_tbl']/tbody/tr[" + (i + 1) + "]/td[6]/div[3]/b")).getText());
             }
             catch (Exception e){}
-
 
         }
 

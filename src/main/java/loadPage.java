@@ -9,9 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Created by Oleksiy on 24.07.2015.
  */
 public class loadPage {
-    String placefrom ="Київ";
-    String placeto ="Львів";
-    String date ="27.07.2015";
+    String placefrom ="Львів";
+    String placeto ="Київ";
+    String date ="28.07.2015";
     int refreshTime = 4000;
     int rowCount;
     static WebDriver driver = new FirefoxDriver();
@@ -44,6 +44,9 @@ public class loadPage {
     search.click();
     Thread.sleep(2000);
 
+    driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div/div[6]/table/tbody/tr[1]/td[6]/div/button")).click();
+        Thread.sleep(5000);
+
     while(driver.getPageSource().contains("There is no data for your requested values.")){
         System.out.println("No trains found. Search again in "+ refreshTime/1000 +" seconds.");
         Thread.sleep(refreshTime);
@@ -53,6 +56,7 @@ public class loadPage {
        setRowCount(driver.findElements(By.className("num")).size());
     System.out.println(rowCount);
         System.out.println();
+
 
 }
 
